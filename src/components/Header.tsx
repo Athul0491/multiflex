@@ -4,7 +4,11 @@ import { Button } from "./ui/button";
 export default function Header() {
   return (
     <nav className="flex h-[10vh] w-full items-center justify-between ">
-      <h1 className="text-[24px] font-extrabold tracking-tighter">Multiflex</h1>
+      <Link href={"/"}>
+        <h1 className="text-[24px] font-extrabold tracking-tighter">
+          Multiflex
+        </h1>
+      </Link>
       <div className="flex gap-x-5">
         <Link href={"/what-we-do"} className="text-base font-semibold">
           What we do
