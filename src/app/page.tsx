@@ -1,8 +1,18 @@
 import Image from "next/image";
 import { Button } from "~/components/ui/button";
 import heroImg from "../images/hero-image.jpg";
+import { title } from "process";
+import { FeatureTitle } from "~/components/features/title";
+import { Hospitability, Offices, Parametric, Residencies, Transformable } from "~/components/features/card";
 
 export default function HomePage() {
+  const features = [
+    { title: "Residencies", card: Residencies },
+    { title: "Offices", card: Offices },
+    { title: "Hospitability", card: Hospitability },
+    { title: "Transformable", card: Transformable },
+    { title: "Parametric", card: Parametric }
+  ]
   return (
     <>
       <section>
@@ -30,6 +40,28 @@ export default function HomePage() {
           </div>
         </main>
         <div className="absolute inset-0 -z-20 bg-[url(/lines.svg)] bg-top opacity-50"></div>
+      </section>
+      <section>
+        {/* Features */}
+        <div className="flex w-full p-10 items-start">
+        <div className="w-full py-[50vh]">
+          <ul>
+            {features.map((feature) => (
+              <li key={feature.title}>
+                <FeatureTitle title={feature.title}>{feature.title}</FeatureTitle>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="w-full sticky top-10 flex h-screen items-center">
+          <div className="relative aspect-square w-full rounded-2xl bg-gray-300 h-[400px]">
+            {features.map((feature) => (
+              <feature.card key={feature.title} title={feature.title} />
+            ))}
+          </div>
+        </div>
+        </div>
+        <div className="h-screen">More room to scroll</div>
       </section>
     </>
   );
